@@ -1,0 +1,58 @@
+/* src/components/form/Radio.css */
+
+/* Base label container */
+.radio-label {
+  @apply inline-flex items-center gap-2 cursor-pointer text-sm select-none;
+  color: var(--color-input-text);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Input invisible stylé via accent-color */
+.radio-input {
+  @apply h-4 w-4 rounded-full border transition-colors;
+  appearance: none; /* on remplace le rendu natif */
+  border: 1.5px solid var(--color-input-border);
+  background-color: var(--color-input-bg);
+  position: relative;
+  cursor: pointer;
+}
+.radio-input:hover {
+  border-color: var(--color-input-border-hover);
+}
+
+/* Cercle intérieur “checked” */
+.radio-input:checked {
+  border-color: var(--color-primary);
+}
+
+.radio-input:checked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
+/* Focus visible et accessible */
+.radio-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-input-focus-ring);
+}
+
+/* Disabled */
+.radio-input:disabled + .radio-text {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Texte du label */
+.radio-text {
+  line-height: 1;
+  color: inherit;
+}

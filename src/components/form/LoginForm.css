@@ -1,0 +1,6 @@
+/* src/components/form/LoginForm.css */
+
+.login-form {
+  background-color: var(--color-form-bg);
+  color: var(--color-form-text);
+}

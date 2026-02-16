@@ -1,0 +1,36 @@
+/* src/components/contact/LocationSection.css */
+
+/* Layout via Tailwind (@apply) */
+.location-section {
+}
+.location-header {
+  @apply space-y-3;
+}
+.location-grid {
+  @apply mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start md:gap-12;
+}
+.location-card {
+  @apply flex flex-col items-center text-center space-y-4;
+}
+.location-map {
+  @apply w-full aspect-[4/3] rounded-xl overflow-hidden shadow-md;
+}
+
+/* Align helpers (layout only) */
+.align-left {
+  @apply text-center md:text-left md:items-start;
+}
+.align-center {
+  @apply text-center md:text-center md:items-center;
+}
+.align-right {
+  @apply text-center md:text-right md:items-end;
+}
+
+/* Couleurs / typos en CSS variables (pas de @apply ici) */
+.location-title {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 600; /* font-semibold */
+  color: var(--color-heading);
+}

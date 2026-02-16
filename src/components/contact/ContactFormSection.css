@@ -1,0 +1,22 @@
+/* src/components/contact/ContactFormSection.css */
+
+.contact-form-section {
+  /* Fond section */
+  background-color: var(--color-contact-bg);
+}
+
+/* Zone “aside” (infos complémentaires) */
+.contact-form-aside {
+  @apply rounded-xl shadow p-6 sm:p-8;
+  background-color: var(--color-form-aside-bg);
+  color: var(--color-form-aside-text);
+}
+
+.contact-form-aside h3 {
+  @apply text-lg font-semibold mb-2;
+}
+
+.contact-form-aside p {
+  @apply text-sm leading-relaxed;
+  color: var(--color-form-aside-muted);
+}

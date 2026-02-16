@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   TEMPLATE — Design Tokens
+   3 levels: Sources → Brand → UI tokens
+   Light mode by default, Dark mode via html.dark
+   ========================================================= */
+
+:root {
+  /* =========================================================
+     1) COLOR SOURCES (raw palette — TEMPLATE NEUTRALS)
+     ========================================================= */
+  --neutral-950: #0b0f14;
+  --neutral-900: #111827;
+  --neutral-800: #1f2937;
+  --neutral-700: #374151;
+  --neutral-600: #6b7280;
+  --neutral-500: #9aa0aa;
+  --neutral-400: #9ca3af;
+  --neutral-300: #d1d5db;
+  --neutral-200: #e5e7eb;
+  --neutral-150: #eff1f3;
+  --neutral-100: #f5f5f5;
+  --neutral-050: #fafafa;
+
+  --white-100: #ffffff;
+  --on-dark-100: #f2f2f2;
+  --danger-600: #dc2626;
+
+  /* =========================================================
+     2) BRAND PALETTE (semantic mapping)
+     ⚠️ SAME TOKENS AS LUMIÈRE D’ARCACHON
+     ========================================================= */
+  --brand-bg: var(--neutral-100);
+  --brand-surface: var(--white-100);
+  --brand-text: var(--neutral-900);
+  --brand-accent: var(--neutral-900);
+  --brand-muted: var(--neutral-700);
+
+  /* Brand anchors */
+  --brand-strong: var(--neutral-800);
+  --on-brand-strong: var(--on-dark-100);
+  --on-brand-strong-soft: rgba(242, 242, 242, 0.85);
+
+  /* =========================================================
+     3) UI TOKENS (functional roles)
+     ⚠️ IDENTICAL API
+     ========================================================= */
+
+  /* Core */
+  --color-bg: var(--brand-bg);
+  --color-surface: var(--brand-surface);
+  --color-surface-soft: var(--neutral-150);
+  --color-text: var(--brand-text);
+  --color-heading: var(--brand-text);
+  --color-muted: var(--neutral-400);
+
+  /* Accents */
+  --color-primary: var(--brand-accent);
+  --color-secondary: var(--brand-muted);
+
+  /* Borders & states */
+  --color-border: var(--neutral-300);
+  --color-link: var(--color-secondary);
+  --color-link-hover: var(--color-primary);
+  --focus-ring: color-mix(in oklab, var(--neutral-600) 40%, white);
+
+  /* Header */
+  --color-header-bg: rgba(255, 255, 255, 0.85);
+  --color-header-bg-blur: blur(6px);
+  --color-header-text: var(--neutral-800);
+  --color-header-hover: var(--neutral-600);
+  --color-header-active: var(--color-primary);
+  --color-header-border: color-mix(in oklab, var(--color-primary) 8%, transparent);
+  --color-header-icon: var(--neutral-800);
+  --color-header-mobile-hover: var(--neutral-200);
+
+  /* Footer / CTA / Heroes */
+  --color-footer-bg: var(--brand-strong);
+  --color-footer-text: var(--on-brand-strong);
+  --color-footer-link-hover: var(--neutral-300);
+  --color-footer-border: rgba(255, 255, 255, 0.1);
+  --color-footer-icon: var(--on-brand-strong);
+  --color-footer-icon-hover: var(--neutral-050);
+
+  --color-cta-bg: var(--brand-strong);
+  --color-cta-fg: var(--on-brand-strong);
+
+  --color-hero-bg: var(--brand-strong);
+  --color-hero-fg: var(--on-brand-strong);
+  --color-hero-subtitle: var(--on-brand-strong-soft);
+
+  --color-home-hero-bg: var(--brand-strong);
+  --color-home-hero-fg: var(--on-brand-strong);
+  --color-home-hero-subtitle: rgba(242, 242, 242, 0.8);
+
+  /* Typography */
+  --color-section-title: var(--color-heading);
+  --color-subtitle: var(--color-heading);
+  --color-eyebrow: var(--color-heading);
+
+  /* Buttons */
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-text: var(--white-100);
+  --btn-primary-border: var(--color-primary);
+  --btn-primary-hover-bg: color-mix(in oklab, var(--color-primary) 92%, white);
+  --btn-primary-hover-text: var(--white-100);
+  --btn-primary-hover-border: color-mix(in oklab, var(--color-primary) 88%, white);
+  --btn-primary-focus-ring: var(--focus-ring);
+
+  --btn-secondary-bg: var(--color-secondary);
+  --btn-secondary-text: var(--white-100);
+  --btn-secondary-border: var(--color-secondary);
+  --btn-secondary-hover-bg: color-mix(in oklab, var(--color-secondary) 90%, white);
+  --btn-secondary-hover-text: var(--white-100);
+  --btn-secondary-hover-border: color-mix(in oklab, var(--color-secondary) 85%, white);
+  --btn-secondary-focus-ring: var(--focus-ring);
+
+  /* GlassLight */
+  --btn-glasslight-bg: rgba(255, 255, 255, 0.1);
+  --btn-glasslight-text: var(--white-100);
+  --btn-glasslight-border: rgba(255, 255, 255, 0.3);
+  --btn-glasslight-hover-bg: rgba(255, 255, 255, 0.2);
+  --btn-glasslight-hover-text: var(--white-100);
+  --btn-glasslight-hover-border: rgba(255, 255, 255, 0.4);
+  --btn-glasslight-focus-ring: rgba(255, 255, 255, 0.5);
+
+  /* Layout */
+  --header-height: 56px;
+
+  /* Cards */
+  --card-radius: 0.75rem;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  --card-bg: var(--color-surface);
+  --card-border: var(--neutral-200);
+  --card-text: var(--color-text);
+  --card-title: var(--color-section-title);
+  --card-muted-opacity: 0.75;
+
+  --card-header-bg: var(--color-secondary);
+  --card-header-fg: var(--white-100);
+
+  --card-outlined-bg: var(--white-100);
+  --card-outlined-border: var(--color-primary);
+
+  --card-gradient-fg: var(--white-100);
+  --card-gradient-start: var(--color-secondary);
+  --card-gradient-end: var(--color-primary);
+
+  --card-icon-size: 2.5rem;
+  --card-icon-fg: var(--color-secondary);
+
+  /* Inputs */
+  --color-input-bg: var(--color-surface);
+  --color-input-text: var(--color-text);
+  --color-input-border: var(--color-border);
+  --color-input-label: var(--color-muted);
+  --color-input-label-focus: var(--color-primary);
+  --color-input-border-hover: color-mix(in oklab, var(--color-border), var(--color-text) 20%);
+  --color-input-border-focus: var(--color-primary);
+  --color-input-focus-ring: color-mix(in oklab, var(--color-primary), white 85%);
+  --color-input-bg-disabled: var(--neutral-150);
+  --color-input-text-disabled: var(--neutral-400);
+  --color-input-help: var(--color-muted);
+  --color-input-error: var(--danger-600);
+  --color-input-error-ring: color-mix(in oklab, var(--danger-600), white 85%);
+
+  /* FileUpload (input-like) */
+  --color-input-border-hover-strong: color-mix(
+    in oklab,
+    var(--color-input-border),
+    var(--color-primary) 40%
+  );
+  --color-input-help-strong: color-mix(in oklab, var(--color-input-help), black 20%);
+  --color-input-error-strong: #b91c1c; /* rouge-700 (message d'erreur) */
+
+  /* =========================
+   Overlay / Modal
+   ========================= */
+
+  --color-overlay-bg: rgba(15, 26, 32, 0.55); /* light mode */
+
+  /* Aliases */
+  --background: var(--color-bg);
+  --foreground: var(--color-text);
+
+  --header-offset: var(--header-height);
+}
+
+/* ===== Dark mode ===== */
+html.dark {
+  --brand-bg: var(--neutral-950);
+  --brand-surface: var(--neutral-900);
+  --brand-text: var(--on-dark-100);
+  --brand-muted: var(--neutral-400);
+
+  --color-bg: var(--brand-bg);
+  --color-surface: var(--brand-surface);
+  --color-text: var(--brand-text);
+  --color-heading: var(--brand-text);
+  --color-muted: var(--brand-muted);
+
+  --color-border: rgba(255, 255, 255, 0.12);
+  --focus-ring: color-mix(in oklab, var(--color-primary) 55%, transparent);
+
+  --color-overlay-bg: rgba(0, 0, 0, 0.65);
+
+  --background: var(--color-bg);
+  --foreground: var(--color-text);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-height: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 80px;
+  }
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

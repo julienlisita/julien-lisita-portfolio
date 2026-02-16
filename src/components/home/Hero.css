@@ -1,0 +1,60 @@
+/* src/components/home/Hero.css */
+
+/* Layout (Tailwind via @apply) */
+.hero-section {
+  @apply w-full flex flex-col justify-center text-center px-4;
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* Background layer */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg__img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlay au-dessus de l'image mais sous le contenu */
+.hero-bg__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-overlay-bg);
+}
+
+.hero-container {
+  @apply max-w-4xl mx-auto space-y-6 z-10;
+}
+
+.hero-title {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+  color: var(--color-home-hero-title);
+}
+
+.hero-actions {
+  @apply flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4;
+}
+
+/* Couleurs / typographies (CSS pur avec variables du design system) */
+.hero-section {
+  background-color: var(--color-home-hero-bg);
+  color: var(--color-home-hero-fg);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 0.95rem + 0.5vw, 1.25rem); /* ~ text-lg → text-xl */
+  line-height: 1.6;
+  color: var(--color-home-hero-subtitle);
+}
+
+/* Optionnel : espace un peu plus large sous le titre selon tes besoins */
+.hero-container .page-title + .hero-subtitle {
+  margin-top: 0.25rem;
+}

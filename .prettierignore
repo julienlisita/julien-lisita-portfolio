@@ -1,0 +1,25 @@
+# Next.js build
+.next
+out
+
+# TypeScript build
+dist
+build
+
+# Dépendances
+node_modules
+
+# Lock files (choisis selon ton gestionnaire de paquets)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Static files
+public
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.*

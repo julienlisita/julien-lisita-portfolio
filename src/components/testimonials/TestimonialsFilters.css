@@ -1,0 +1,54 @@
+/* src/components/testimonials/TestimonialsFilters.css */
+
+.testimonials-filters {
+  @apply space-y-5 sm:space-y-6;
+}
+
+.testimonials-filters__row {
+  @apply space-y-2;
+}
+
+.testimonials-filters__label {
+  @apply text-xs uppercase tracking-widest;
+  color: var(--color-muted);
+}
+
+.testimonials-filters__chips {
+  @apply flex flex-wrap gap-2;
+}
+
+/* Chip (identique GalleryFilters) */
+.chip {
+  @apply text-sm px-3 py-2 rounded-full;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--card-outlined-border);
+  color: color-mix(in oklab, var(--color-text) 80%, var(--color-secondary));
+}
+
+.chip.is-active {
+  background: color-mix(in oklab, var(--color-primary) 18%, var(--color-surface));
+  border-color: color-mix(in oklab, var(--color-primary) 40%, var(--color-border));
+}
+
+.testimonials-filters__actions {
+  @apply pt-1;
+}
+
+/* Clear (identique GalleryFilters) */
+.clear {
+  @apply text-sm underline underline-offset-4;
+  color: var(--color-link);
+}
+.clear:hover {
+  color: var(--color-link-hover);
+}

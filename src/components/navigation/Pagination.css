@@ -1,0 +1,32 @@
+/* src/components/navigation/Pagination.css */
+
+.pagination {
+  @apply mt-8 flex items-center justify-center gap-4;
+}
+
+.pagination__btn {
+  @apply text-sm px-4 py-2 rounded-full;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
+}
+
+.pagination__btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--card-outlined-border);
+}
+
+.pagination__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination__info {
+  @apply text-sm;
+  color: var(--color-muted);
+}

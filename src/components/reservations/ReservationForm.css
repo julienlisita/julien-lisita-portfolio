@@ -1,0 +1,132 @@
+/* src/components/form/ReservationForm.css */
+
+.reservation-form {
+  @apply space-y-6;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Accordion container */
+.slot-accordion {
+  display: grid;
+  gap: 12px;
+}
+
+/* Item */
+.slot-accordion__item {
+  border: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.slot-accordion__item.is-open {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 16%, transparent);
+}
+
+/* Trigger */
+.slot-accordion__trigger {
+  width: 100%;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.slot-accordion__trigger-left {
+  display: grid;
+  gap: 4px;
+}
+
+.slot-accordion__day {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.slot-accordion__meta {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+.slot-accordion__chevron {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+/* Panel */
+.slot-accordion__panel {
+  padding: 0 16px 16px;
+}
+
+/* Groups */
+.slot-accordion__group {
+  margin-top: 12px;
+}
+
+.slot-accordion__group-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+/* Times grid (petits carrés) */
+.slot-accordion__times {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr); /* mobile */
+}
+
+@media (min-width: 640px) {
+  .slot-accordion__times {
+    grid-template-columns: repeat(3, 1fr); /* tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .slot-accordion__times {
+    grid-template-columns: repeat(4, 1fr); /* desktop */
+  }
+}
+
+.slot-accordion__time {
+  padding: 12px 10px;
+  border-radius: 14px;
+  font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+  background: #fff;
+  transition: 0.15s ease;
+}
+
+.slot-accordion__time:hover {
+  border-color: var(--color-primary);
+}
+
+.slot-accordion__time.is-active {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, #fff);
+}
+
+.slot-accordion__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.slot-accordion__more-btn {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+  background: #fff;
+  transition: 0.15s ease;
+}
+
+.slot-accordion__more-btn:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 12%, transparent);
+}

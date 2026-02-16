@@ -1,0 +1,60 @@
+/* src/components/form/Checkbox.css */
+
+/* Wrapper global */
+.checkbox-label {
+  @apply inline-flex items-center gap-2 cursor-pointer text-sm select-none;
+  color: var(--color-input-text);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Case personnalisée */
+.checkbox-input {
+  @apply h-4 w-4 rounded-sm border transition-all;
+  appearance: none; /* supprime le style natif */
+  border: 1.5px solid var(--color-input-border);
+  background-color: var(--color-input-bg);
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-input:hover {
+  border-color: var(--color-input-border-hover);
+}
+
+/* État coché */
+.checkbox-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-input:checked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.45rem;
+  height: 0.8rem;
+  border-right: 2px solid var(--color-surface);
+  border-bottom: 2px solid var(--color-surface);
+  transform: rotate(45deg) scale(1);
+  transition: transform 0.2s ease;
+}
+
+/* Focus visible */
+.checkbox-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-input-focus-ring);
+}
+
+/* Disabled */
+.checkbox-input:disabled + .checkbox-text {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Texte */
+.checkbox-text {
+  line-height: 1;
+  color: inherit;
+}

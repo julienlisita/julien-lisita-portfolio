@@ -1,0 +1,105 @@
+/* src/components/layout/Header.css */
+
+/* Layout & structure via @apply */
+.site-header {
+  @apply fixed top-0 z-50 w-full h-14 sm:h-16 lg:h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between shadow-md;
+  background-color: var(--color-header-bg);
+  backdrop-filter: var(--color-header-bg-blur);
+  border-bottom: 1px solid var(--color-header-border);
+}
+
+.logo-wrapper {
+  @apply h-8 sm:h-10 lg:h-12 w-auto flex-shrink-0;
+}
+
+.main-nav {
+  @apply font-semibold;
+}
+
+.nav-list {
+  @apply flex gap-6;
+}
+
+.nav-link {
+  @apply transition outline-none;
+  color: var(--color-header-text);
+}
+
+.menu-toggle {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded lg:hidden outline-none;
+}
+
+.icon {
+  @apply w-6 h-6 transition;
+}
+
+.mobile-menu {
+  @apply absolute top-full left-0 w-full shadow-md transition-all duration-300 overflow-hidden lg:hidden;
+  @apply flex flex-col items-stretch;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: var(--color-header-bg);
+}
+
+.mobile-menu.open {
+  max-height: 24rem; /* max-h-96 */
+  opacity: 1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.mobile-list {
+  @apply flex flex-col;
+}
+
+.mobile-link {
+  @apply block w-full text-center py-2 outline-none;
+}
+
+/* ----- Couleurs / États (CSS pur) ----- */
+.main-nav {
+  color: var(--color-header-text);
+}
+
+.nav-link:hover {
+  color: var(--color-header-hover);
+}
+
+.nav-link[aria-current='page'] {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--color-header-active);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+.icon {
+  color: var(--color-header-icon);
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--color-header-active);
+  outline-offset: 2px;
+}
+
+.mobile-link:hover {
+  background-color: var(--color-header-mobile-hover);
+}
+
+.mobile-link[aria-current='page'] {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: var(--color-header-text);
+}
+
+.mobile-link:focus-visible {
+  outline: 2px solid var(--color-header-active);
+  outline-offset: 2px;
+}

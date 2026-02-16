@@ -1,0 +1,6 @@
+/* src/components/ui/Eyebrow.css */
+
+.eyebrow {
+  @apply block text-sm font-semibold uppercase tracking-wide;
+  color: var(--color-eyebrow);
+}

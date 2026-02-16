@@ -1,0 +1,121 @@
+/* src/components/data-display/FeatureCard.css */
+
+/* ---------------------------------------------------------
+   Defaults (accent=neutral) — Component tokens (fc-*)
+   --------------------------------------------------------- */
+.feature-card {
+  /* Component-local tokens */
+  --fc-bg: var(--card-bg);
+  --fc-text: var(--card-text);
+  --fc-title: var(--card-title);
+  --fc-border: var(--card-border);
+  --fc-icon: var(--card-icon-fg);
+
+  --fc-header-bg: var(--card-header-bg);
+  --fc-header-fg: var(--card-header-fg);
+
+  --fc-gradient-start: var(--card-gradient-start);
+  --fc-gradient-end: var(--card-gradient-end);
+  --fc-gradient-fg: var(--card-gradient-fg);
+
+  /* Base */
+  @apply transition overflow-hidden;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background-color: var(--fc-bg);
+  border: 1px solid var(--fc-border);
+  color: var(--fc-text);
+}
+
+.feature-card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* ---------------------------------------------------------
+   Accent (accent=primary)
+   --------------------------------------------------------- */
+.feature-card--primary {
+  --fc-icon: var(--color-primary);
+  --fc-border: color-mix(in oklab, var(--color-primary) 18%, var(--color-border));
+  --fc-header-bg: var(--color-primary);
+  --fc-header-fg: var(--white-100);
+
+  --fc-gradient-start: var(--color-primary);
+  --fc-gradient-end: var(--color-secondary);
+  --fc-gradient-fg: var(--white-100);
+}
+
+/* ---------------------------------------------------------
+   Variants (structure)
+   --------------------------------------------------------- */
+.feature-card--outlined {
+  --fc-bg: var(--card-outlined-bg);
+  --fc-border: var(--card-outlined-border);
+  background-color: var(--fc-bg);
+  border: 2px solid var(--fc-border);
+}
+
+.feature-card--gradient {
+  color: var(--fc-gradient-fg);
+  border: none;
+  background-image: linear-gradient(135deg, var(--fc-gradient-start), var(--fc-gradient-end));
+}
+
+/* ---------------------------------------------------------
+   withHeader (layout interne)
+   --------------------------------------------------------- */
+.feature-card--with-header .feature-card__header {
+  background: var(--fc-header-bg);
+  color: var(--fc-header-fg);
+}
+
+/* ---------------------------------------------------------
+   Sections
+   --------------------------------------------------------- */
+.feature-card__header {
+  @apply flex flex-col space-y-2 p-4;
+}
+
+.feature-card__body {
+  @apply flex flex-col p-6 pt-8 gap-2;
+}
+
+/* Icon */
+.feature-card__icon {
+  @apply inline-flex items-center;
+}
+
+.feature-card__icon-inner {
+  width: var(--card-icon-size);
+  height: var(--card-icon-size);
+  color: var(--fc-icon);
+}
+
+/* For gradient / header we rely on currentColor */
+.feature-card--gradient .feature-card__icon-inner,
+.feature-card__header .feature-card__icon-inner {
+  color: currentColor;
+}
+
+/* Title */
+.feature-card__title {
+  @apply text-base sm:text-lg font-semibold;
+  color: var(--fc-title);
+}
+
+.feature-card--gradient .feature-card__title,
+.feature-card__header .feature-card__title {
+  color: currentColor;
+}
+
+/* Description */
+.feature-card__desc {
+  @apply text-sm leading-relaxed;
+  color: currentColor;
+  opacity: var(--card-muted-opacity);
+}
+
+/* Actions */
+.feature-card__actions {
+  @apply mt-2;
+}

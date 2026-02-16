@@ -1,0 +1,93 @@
+/* src/components/layout/Footer.css */
+
+/* === Layout global === */
+.footer {
+  @apply bg-[var(--color-footer-bg)] text-[var(--color-footer-text)]
+         flex flex-col w-full px-4 sm:px-8 py-6 sm:py-8 space-y-6;
+}
+
+/* --- Bloc supérieur : logo / menu / réseaux --- */
+.footer-top {
+  @apply flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0;
+}
+
+.footer-logo {
+  @apply h-8 sm:h-9 w-auto flex-shrink-0;
+}
+
+.footer-nav {
+  @apply flex flex-col sm:flex-row items-center justify-center 
+         space-y-2 sm:space-y-0 sm:space-x-6 text-center font-medium text-sm;
+}
+
+/* --- Réseaux sociaux --- */
+.footer-socials {
+  @apply flex items-center space-x-4;
+}
+
+.footer-icon {
+  @apply w-8 h-8 sm:w-9 sm:h-9 transition;
+  color: var(--color-footer-icon);
+}
+
+.footer-icon:hover {
+  color: var(--color-footer-icon-hover);
+}
+
+/* --- Séparateur --- */
+.footer-separator {
+  @apply w-full h-px;
+  background-color: var(--color-footer-border);
+  opacity: 0.3;
+}
+
+/* --- Bloc inférieur : copyright / liens légaux --- */
+.footer-bottom {
+  @apply flex flex-col sm:flex-row justify-between items-center gap-3 text-sm;
+  color: var(--color-footer-text);
+}
+
+.footer-copy {
+  @apply text-xs sm:text-sm font-normal opacity-80 text-center sm:text-left;
+}
+
+.footer-legal {
+  @apply flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4;
+}
+
+.footer-legal a {
+  color: var(--color-footer-text);
+  text-decoration: none;
+  transition:
+    color 0.3s ease,
+    text-decoration 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--color-footer-link-hover);
+  text-decoration: underline;
+}
+
+/* --- Menu principal --- */
+.footer-nav a {
+  color: var(--color-footer-text);
+  text-decoration: none;
+  transition:
+    color 0.3s ease,
+    text-decoration 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--color-footer-link-hover);
+  text-decoration: underline;
+}
+
+.footer-admin-link {
+  font-size: 0.75rem; /* plus petit */
+  opacity: 0.7;
+}
+
+.footer-admin-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}

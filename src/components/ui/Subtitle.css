@@ -1,0 +1,6 @@
+/* src/components/ui/Subtitle.css */
+
+.subtitle {
+  @apply text-lg font-medium mt-3;
+  color: var(--color-subtitle);
+}

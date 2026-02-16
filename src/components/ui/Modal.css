@@ -1,0 +1,37 @@
+/* src/components/ui/Modal.css */
+
+/* Overlay semi-transparent */
+.modal-backdrop {
+  @apply fixed inset-0 flex items-center justify-center z-50;
+  background-color: var(--color-overlay-bg);
+  backdrop-filter: blur(2px);
+}
+
+/* Container principal */
+.modal-container {
+  @apply rounded-lg shadow-lg p-6 max-w-lg w-full relative;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Bouton de fermeture */
+.modal-close {
+  @apply absolute top-2 right-3 text-xl;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+}
+
+/* Contenu interne */
+.modal-content {
+  @apply mt-2;
+  color: inherit;
+}

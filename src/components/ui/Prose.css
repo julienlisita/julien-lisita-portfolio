@@ -1,0 +1,29 @@
+/* src/components/ui/Prose.css */
+
+/* VISUEL UNIQUEMENT (contenu éditorial) */
+.prose-content {
+  color: var(--color-text);
+  line-height: 1.75;
+}
+
+/* Titres internes */
+.prose-content h3 {
+  font-size: 1.125rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--color-heading);
+}
+
+/* Listes */
+.prose-content ul {
+  list-style: disc inside;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Liens */
+.prose-content a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+.prose-content a:hover {
+  color: var(--color-link-hover);
+}

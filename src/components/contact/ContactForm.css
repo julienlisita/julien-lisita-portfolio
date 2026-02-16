@@ -1,0 +1,7 @@
+/* src/components/contact/ContactForm.css */
+
+.contact-form {
+  @apply space-y-6 rounded-xl shadow p-6 sm:p-8;
+  background-color: var(--color-form-bg);
+  color: var(--color-form-text);
+}

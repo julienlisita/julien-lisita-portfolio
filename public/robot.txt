@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Interdire l'accès à certains répertoires (si tu en ajoutes plus tard)
+Disallow: /admin/
+Disallow: /draft/
+
+# Lien vers le sitemap
+Sitemap: https://www.exemple.com/sitemap.xml

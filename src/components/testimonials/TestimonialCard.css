@@ -1,0 +1,160 @@
+/* src/components/data-display/TestimonialCard.css */
+
+/* ---------------------------------------------------------
+   Defaults — Component tokens (tc-*)
+   --------------------------------------------------------- */
+.t-card {
+  /* Component-local tokens (mapped to global DS) */
+  --tc-bg: var(--card-bg);
+  --tc-border: var(--card-border);
+  --tc-text: var(--card-text);
+  --tc-title: var(--card-title);
+  --tc-muted: var(--color-muted);
+
+  --tc-avatar-bg: var(--color-surface-soft);
+
+  --tc-star-empty: var(--color-border);
+  --tc-star-full: var(--color-primary);
+  --tc-star-half-mask: var(--tc-bg);
+
+  --tc-quote: var(--tc-text);
+  --tc-quote-mark: var(--color-secondary);
+  --tc-quote-mark-opacity: 0.25;
+
+  --tc-focus-ring: var(--focus-ring);
+
+  /* Layout (Tailwind via @apply) */
+  @apply w-full p-6 flex flex-col gap-4 transition overflow-hidden;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background-color: var(--tc-bg);
+  border: 1px solid var(--tc-border);
+  color: var(--tc-text);
+}
+
+.t-card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.t-card--compact {
+  @apply p-4 gap-3;
+}
+
+.t-card--horizontal {
+  @apply md:flex-row md:items-start;
+}
+
+/* header */
+.t-card-head {
+  @apply flex items-center gap-3;
+}
+
+.t-avatar {
+  @apply relative shrink-0 rounded-full overflow-hidden;
+  width: 48px;
+  height: 48px;
+  background-color: var(--tc-avatar-bg);
+}
+
+.t-avatar--placeholder::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-border), transparent 35%) 35%,
+    transparent 36%
+  );
+  background-size: 8px 8px;
+  background-position: center;
+}
+
+.t-id {
+  @apply flex flex-col leading-tight;
+}
+
+.t-name {
+  @apply text-base font-semibold;
+  color: var(--tc-title);
+}
+
+.t-meta {
+  @apply text-sm;
+  color: var(--tc-muted);
+}
+
+.t-date {
+  @apply text-xs;
+  color: color-mix(in oklab, var(--tc-muted), transparent 25%);
+}
+
+/* rating */
+.t-rating {
+  @apply flex items-center gap-1;
+}
+
+.t-star {
+  @apply w-5 h-5;
+  color: var(--tc-star-empty);
+}
+
+.t-star--full {
+  color: var(--tc-star-full);
+}
+
+/* demi-étoile: on colore, puis on masque moitié droite */
+.t-star--half {
+  color: var(--tc-star-full);
+  position: relative;
+  overflow: hidden;
+}
+
+.t-star--half::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  background: var(--tc-star-half-mask);
+}
+
+/* quote */
+.t-quote {
+  @apply relative;
+  color: var(--tc-quote);
+}
+
+.t-quote p {
+  @apply text-sm leading-relaxed;
+}
+
+.t-quote-mark {
+  @apply absolute;
+  left: -0.25rem;
+  top: -0.75rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--tc-quote-mark);
+  opacity: var(--tc-quote-mark-opacity);
+}
+
+/* highlight variant */
+.t-card--highlight {
+  --tc-bg: var(--color-bg);
+  --tc-border: color-mix(in oklab, var(--color-secondary) 35%, var(--card-border));
+  box-shadow: 0 10px 30px color-mix(in oklab, var(--color-secondary) 18%, transparent);
+}
+
+/* focus & a11y */
+.t-card:focus-within {
+  outline: none;
+  box-shadow:
+    var(--card-shadow),
+    0 0 0 3px var(--tc-focus-ring);
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .t-card {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,64 @@
+/* src/components/pages/PortfolioContent.css */
+
+.project-panel {
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--card-text);
+}
+
+.project-panel__eyebrow {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.project-panel__text {
+  color: var(--card-text);
+}
+
+.project-info__label {
+  color: var(--color-muted);
+}
+
+.project-link {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.project-link:hover {
+  color: var(--color-link-hover);
+}
+
+.project-muted {
+  color: var(--color-muted);
+}
+
+.project-cardline {
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--card-text);
+}
+
+.project-cardline__title {
+  font-weight: 600;
+  color: var(--card-title);
+}
+
+.project-cardline__text {
+  color: var(--card-text);
+}
+
+.project-chip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+
+  background: color-mix(in oklab, var(--color-secondary) 10%, transparent);
+  color: var(--color-secondary);
+  border: 1px solid color-mix(in oklab, var(--color-secondary) 18%, transparent);
+}

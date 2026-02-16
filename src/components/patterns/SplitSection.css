@@ -1,0 +1,116 @@
+/* src/components/patterns/SplitSection.css */
+
+/* ────────────────────────────────────────────── */
+/* Tonalités visuelles */
+/* ────────────────────────────────────────────── */
+
+.split.split--default {
+  background-color: transparent;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.split.split--muted {
+  background-color: #faf8f3;
+  border-top: 2px solid var(--color-terre);
+  border-bottom: 2px solid var(--color-terre);
+}
+
+.split.split--brand {
+  background-color: #f0f6ff;
+  border-top: 2px solid #3e8ce0;
+  border-bottom: 2px solid #3e8ce0;
+}
+
+/* ────────────────────────────────────────────── */
+/* Grille responsive */
+/* ────────────────────────────────────────────── */
+
+.split__grid {
+  @apply grid gap-8 md:grid-cols-2 md:items-center;
+}
+
+/* Sur mobile : texte d'abord, image ensuite */
+.split__body {
+  @apply order-1 md:order-2;
+}
+
+.split__media {
+  @apply order-2 md:order-1 flex items-center justify-center;
+}
+
+/* Version inversée : inverse seulement à partir du desktop */
+.split__grid.is-reverse .split__body {
+  @apply md:order-1;
+}
+
+.split__grid.is-reverse .split__media {
+  @apply md:order-2;
+}
+
+/* ────────────────────────────────────────────── */
+/* Media (Image) */
+/* ────────────────────────────────────────────── */
+
+/* Image à gauche → bord gauche */
+.split__grid:not(.is-reverse) .split__media {
+  @apply md:justify-start md:pl-0 md:pr-8;
+}
+
+/* Image à droite → bord droit */
+.split__grid.is-reverse .split__media {
+  @apply md:justify-end md:pr-0 md:pl-8;
+}
+
+/* Wrapper image */
+.split__img-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: transparent;
+  max-width: 450px;
+}
+
+/* Aspect ratios */
+.split__img-wrap.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+.split__img-wrap.aspect-landscape {
+  aspect-ratio: 4 / 3;
+}
+.split__img-wrap.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* Image */
+.split__img {
+  @apply object-contain;
+  object-position: center;
+}
+
+/* ────────────────────────────────────────────── */
+/* Texte */
+/* ────────────────────────────────────────────── */
+
+.split__body {
+  @apply text-center md:text-left;
+}
+
+.split__text {
+  @apply mt-5 text-base leading-relaxed;
+  color: var(--color-dark);
+}
+
+.split__extra {
+  @apply mt-5 space-y-3;
+  color: var(--color-dark);
+}
+
+/* ────────────────────────────────────────────── */
+/* Actions (CTA) */
+/* ────────────────────────────────────────────── */
+
+.split__actions {
+  @apply mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center md:justify-start;
+}
