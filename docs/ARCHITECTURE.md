@@ -34,7 +34,7 @@ nextjs-ts-tailwind-template/
 │   ├── components/        # Reusable UI components (by feature/type)
 │   ├── config/            # App config (e.g. dataMode)
 │   ├── data/              # Static data when DB is disabled
-│   ├── lib/               # Shared utilities (prisma, jwt auth-cookies)
+│   ├── lib/               # Shared utilities (prisma, jwt, auth-cookies)
 │   ├── screens/           # Screen-level UI components (no routing, no data fetching)
 │   ├── server/            # Guards, repositories, services
 │   ├── types/             # Shared TypeScript types
@@ -47,7 +47,7 @@ nextjs-ts-tailwind-template/
 - **`(site)/`**: Public site layout (Header, Footer, main with header offset). Contains:
   - **`(auth)/`**: login, signup (route groups; no layout segment in URL).
   - **Other segments**: about, contact, events, faq, gallery, legal/\*, news, portfolio, recruitment, reservations, services, testimonials, thank-you, thank-you-application.
-- **`admin/`**: Admin area; layout in `admin/layout.tsx` uses `requireAdmin()` to protect all `/admin/*` routes.
+- **`admin/`**: Admin area; layout in `admin/layout.tsx` uses `requireAdminApp()` to protect all `/admin/*` routes.
 - **Convention**: Each route segment that has a screen has a `page.tsx` that usually exports `metadata` and renders a component from `src/screens/`. Forms use co-located `actions.ts` (server actions).
 
 ### 2.2 `src/screens/`
@@ -77,12 +77,11 @@ nextjs-ts-tailwind-template/
 
 - **`guards/`**:
   - `requireAuth.app.ts` — App Router: reads cookie, verifies JWT, redirects to `/login` if missing/invalid; returns user payload.
-  - `requireAuth.pages.ts` — Pages Router: `getServerSideProps` context; returns decoded user or null.
-  - `requireAdmin.ts` — Uses auth (imports from `./requireAuth`); redirects if not ADMIN; returns admin user info. Used by `app/admin/layout.tsx`.
+  - `requireAdmin.app.ts` — App Router: ensures the authenticated user has role `ADMIN`; used in `app/admin/layout.tsx` to protect all `/admin/*` routes.
 - **`repositories/`**: One file per entity (e.g. `news.repo.ts`, `job-offer.repo.ts`). Thin wrappers around Prisma (findMany, findUnique, create, update, delete). No business logic.
 - **`services/`**:
   - **`*.service.ts`**: Business logic; call repos, no direct Prisma.
-  - **`*.server.ts`**: Adapters for server-side data fetching. They check `IS_DB` from `@/config/dataMode`: if false, return static data from `src/data/`; if true, call the corresponding `*.service.ts` (with dynamic import where needed to avoid bundling Prisma in edge/static). Used by `getServerSideProps` or can be used from Server Components.
+  - **`*.server.ts`**: Adapters for server-side data fetching. They check `IS_DB` from `@/config/dataMode`: if false, return static data from `src/data/`; if true, call the corresponding `*.service.ts` (with dynamic import where needed to avoid bundling Prisma in edge/static). Used by Server Components rendered from `app/**/page.tsx`.
 
 ### 2.5 `src/config/`, `src/data/`, `src/lib/`, `src/types/`, `src/utils/`
 
@@ -98,8 +97,8 @@ nextjs-ts-tailwind-template/
 
 - **Public site**: All public URLs live under the `(site)` group: `/(site)/page.tsx` → `/`, `/(site)/contact/page.tsx` → `/contact`, etc. Shared layout: Header, main (with `paddingTop: var(--header-offset)`), Footer.
 - **Auth routes**: `/(site)/(auth)/login`, `/(site)/(auth)/signup` — same site layout, no `/auth` in path.
-- **Admin**: `/admin`, `/admin/news`, `/admin/offers`, `/admin/reservations`, `/admin/settings`, `/admin/testimonials`, `/admin/slots`. All wrapped by `admin/layout.tsx` which runs `requireAdmin()` (force-dynamic).
-- **Dynamic segments**: e.g. `portfolio/[slug]/page.tsx`, `recruitment/[slug]/page.tsx`; page components in `pages/Project.tsx`, `pages/JobOffer.tsx`, etc.
+- **Admin**: `/admin`, `/admin/news`, `/admin/offers`, `/admin/reservations`, `/admin/settings`, `/admin/testimonials`, `/admin/slots`. All wrapped by `admin/layout.tsx` which runs `requireAdminApp()` (force-dynamic).
+- **Dynamic segments**: e.g. `portfolio/[slug]/page.tsx`, `recruitment/[slug]/page.tsx`; route `page.tsx` fetches data (directly or via `*.server.ts`) and renders a Screen component (e.g. `src/screens/ProjectScreen.tsx`, `src/screens/JobOfferScreen.tsx`).
 
 ---
 
@@ -128,15 +127,17 @@ nextjs-ts-tailwind-template/
 - **Components**: Each component that needs custom visuals imports its `.css` file. In the CSS file:
   - **Layout / responsive**: Tailwind utilities via `@apply` (e.g. `@apply flex gap-4 lg:grid lg:grid-cols-2`).
   - **Visual**: Raw CSS with tokens (e.g. `background-color: var(--color-hero-bg);`, `color: var(--btn-primary-text);`, hover/focus states).
-- **Tailwind config**: `content` includes `app`, `components`, `pages`, `utils`; theme extends with token-based colors (e.g. `primary: 'var(--color-primary)'`) so Tailwind classes can reference the design system when needed.
+- **Tailwind config**: `content` includes `app`, `components`, `screens`, `utils` (and `server` only if needed for class scanning).
 
 ---
 
 ## 6. Auth flow
 
-- **Login**: Form in `(auth)/login` submits to a server action; action validates credentials (via auth service), creates JWT, sets HTTP-only cookie (name from `auth-cookies.ts`), then redirects.
-- **Protected routes (App Router)**: Layout or page calls `requireAuthApp()` or `requireAdmin()`. `requireAuthApp` reads cookie, verifies JWT, redirects to `/login` on failure. `requireAdmin` enforces role ADMIN and loads user from `user.repo`.
-- **Admin layout**: `app/admin/layout.tsx` is async and runs `requireAdmin()` once; all `/admin/*` routes are thus protected.
+- **Login**: Form in `(auth)/login` submits to a server action; action validates credentials, creates JWT, sets HTTP-only cookie (name from `auth-cookies.ts`), then redirects.
+- **Protected routes (App Router)**: Layout or page calls `requireAuthApp()` or `requireAdminApp()`.
+  - `requireAuthApp` reads cookie, verifies JWT, redirects to `/login` on failure.
+  - `requireAdminApp` enforces role `ADMIN` and can load user info via repository if needed.
+- **Admin layout**: `app/admin/layout.tsx` runs `requireAdminApp()` once; all `/admin/*` routes are protected.
 
 ---
 

@@ -40,7 +40,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Database (optional)
 
-The app can run in **static** mode (no DB) or **database** mode. Default is static unless configured.
+The app can run in **static** mode (no DB) or **database** mode. Default mode is **static** (`DATA_MODE=static`) if no environment variable is set.
 
 1. Create a `.env` file:
 
@@ -74,6 +74,18 @@ The app can run in **static** mode (no DB) or **database** mode. Default is stat
 
 ---
 
+## Data mode
+
+The template supports two modes:
+
+- `static` (default): data comes from `src/data/`
+- `db`: data comes from PostgreSQL via Prisma
+
+Switch with:
+
+``env
+DATA_MODE=db
+
 ## Scripts
 
 | Script         | Description                                                      |
@@ -97,7 +109,9 @@ The app can run in **static** mode (no DB) or **database** mode. Default is stat
 ## Project overview
 
 - **Routes**: App Router only under `src/app/`. Public site under `(site)/`, admin under `admin/` (protected by `requireAdminApp`).
-- **Screens**: Page-level UI components live in `src/screens/` and are imported by `app/**/page.tsx`. Screens do not perform data fetching or routing.
+- **Screens**: Page-level UI components live in `src/screens/` and follow the `*Screen.tsx` naming convention.  
+  They are imported by `src/app/**/page.tsx`.  
+  Screens do not perform data fetching, routing, or direct Prisma access.
 - **Server Sections**: Data fetching is handled exclusively by async Server Components (e.g. `*SectionServer.tsx`, `*TeaserServer.tsx`) or directly in `app/**/page.tsx`. Screens never fetch data.
 - **Components**: Reusable UI in `src/components/` (by feature/type). Styling rule: **Tailwind for layout and responsive**, **CSS files for visual styles** (colors, borders, states) using design tokens from `src/app/globals.css`.
 - **Server**: Guards in `src/server/guards/`, repositories in `src/server/repositories/`, services in `src/server/services/`. Server adapters (`*.server.ts`) switch between static data (`src/data/`) and DB via `config/dataMode.ts`.
