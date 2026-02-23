@@ -2,19 +2,15 @@
 
 import { Prisma, PrismaClient, Role } from '@prisma/client';
 import bcrypt from 'bcryptjs';
-import { newsItems } from '../src/data/news';
-import { jobOffers } from '../src/data/jobOffers';
 import { testimonials } from '../src/data/testimonials';
 import { fromZonedTime } from 'date-fns-tz';
-
-import type { NewsItem } from '../src/types/news';
-import type { JobOffer } from '../src/types/job';
 import type { Testimonial } from '../src/types/testimonial';
 
 const prisma = new PrismaClient();
 const TZ = 'Europe/Paris';
 
 // helpers
+
 function pad2(n: number) {
   return String(n).padStart(2, '0');
 }
@@ -74,46 +70,8 @@ export async function main() {
     data: testimonials.map((t: Testimonial) => stripId(t)),
   });
 
-  // News
-
-  await prisma.newsItem.deleteMany();
-  await prisma.newsItem.createMany({
-    data: (newsItems as NewsItem[]).map((item) =>
-      toDate({
-        ...stripId(item),
-        // éviter undefined pour les champs NULLables
-        coverImage: (item as any).coverImage ?? null,
-      })
-    ) as Prisma.NewsItemCreateManyInput[],
-  });
-
-  // Job offers
-
-  await prisma.jobOffer.deleteMany();
-
-  const jobOffersData = (jobOffers as JobOffer[]).map((offer) => {
-    const base = toDate(stripId(offer));
-
-    return {
-      ...base,
-      // obligatoires (sécurité)
-      slug: offer.slug,
-      title: offer.title,
-      location: offer.location,
-      contractType: offer.contractType,
-      description: offer.description ?? '',
-
-      // structures
-      equipments: offer.equipments ?? [], // si Prisma = String[]
-      sections: offer.sections ?? null, // si Prisma = Json?
-    };
-  });
-
-  await prisma.jobOffer.createMany({
-    data: jobOffersData as Prisma.JobOfferCreateManyInput[],
-  });
-
   // Reservation slots (exemple)
+
   await prisma.reservation.deleteMany();
   await prisma.reservationSlot.deleteMany();
 

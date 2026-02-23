@@ -28,30 +28,6 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model JobOffer {
-  id               Int      @id @default(autoincrement())
-  slug             String   @unique
-  title            String
-  location         String
-  contractType     String
-  description      String
-  publishedAt      DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-
-  // contenu riche (optionnel)
-  service          String?
-  reportingLine    String?
-  missionStatement String?
-  scheduleNote     String?
-  workMode         String?
-  remunerationNote String?
-
-  // structures
-  sections         Json?        // optionnel
-  equipments       String[]     // liste, jamais null
-
-  @@index([publishedAt])
-}
 
 model Testimonial {
   id           Int       @id @default(autoincrement())
@@ -69,23 +45,6 @@ model Testimonial {
   isPublished  Boolean   @default(true)
   publishedAt  DateTime? @default(now())
 
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-}
-
-model NewsItem {
-  id           Int       @id @default(autoincrement())
-  slug         String    @unique
-  title        String
-  description  String
-  source       String?
-  url          String?   @unique
-  displayDate  String?
-  publishedAt  DateTime? @default(now())
-  isPublished  Boolean   @default(true)
-  coverImage   String?
-  imageUrl     String?
-  imageAlt     String?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 }
