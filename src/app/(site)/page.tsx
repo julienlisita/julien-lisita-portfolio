@@ -1,6 +1,6 @@
 // src/app/(site)/page.tsx
 
-import Home from '@/screens/Home';
+import HomeScreen from '@/screens/HomeScreen';
 
 export const metadata = {
   title: 'Accueil – Nom entreprise',
@@ -12,5 +12,5 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  return <Home />;
+  return <HomeScreen />;
 }

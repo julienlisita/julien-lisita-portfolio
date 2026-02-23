@@ -11,12 +11,10 @@ import './Header.css';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Accueil' },
-  { href: '/about', label: 'À propos' },
   { href: '/services', label: 'Services' },
-  { href: '/testimonials', label: 'Témoignages' },
-  { href: '/news', label: 'Actualités' },
-  { href: '/recruitment', label: 'Recrutement' },
-  { href: '/reservations', label: 'Réservations' },
+  { href: '/realisations', label: 'Réalisations' },
+  { href: '/tarifs', label: 'Tarifs' },
+  { href: '/a-propos', label: 'À propos' },
   { href: '/contact', label: 'Contact' },
 ];
 

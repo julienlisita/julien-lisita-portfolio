@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import ReservationsAdmin from '@/screens/admin/ReservationsAdmin';
+import ReservationsAdminScreen from '@/screens/admin/ReservationsAdminScreen';
 
 export const metadata = {
   title: 'Administration – Réservations',
@@ -10,5 +10,5 @@ export const metadata = {
 };
 
 export default function ReservationAdminPage() {
-  return <ReservationsAdmin />;
+  return <ReservationsAdminScreen />;
 }

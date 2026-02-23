@@ -1,11 +1,11 @@
 // src/app/admin/testimonials/page.tsx
 
-export const dynamic = 'force-dynamic';
+import TestimonialsAdminScreen from '@/screens/admin/TestimonialsAdminScreen';
 
-import TestimonialsAdmin from '@/screens/admin/TestimonialsAdmin';
+export const dynamic = 'force-dynamic';
 
 export const metadata = { title: 'Administration – Témoignages' };
 
 export default function TestimonialsAdminPage() {
-  return <TestimonialsAdmin />;
+  return <TestimonialsAdminScreen />;
 }

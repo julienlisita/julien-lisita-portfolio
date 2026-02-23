@@ -1,6 +1,6 @@
 // src/app/(site)/legal/privacy/page.tsx
 
-import Privacy from '@/screens/legal/Policy';
+import PrivacyScreen from '@/screens/legal/PolicyScreen';
 
 export const metadata = {
   title: 'Politique de confidentialité – Nom entreprise',
@@ -12,5 +12,5 @@ export const metadata = {
 };
 
 export default function PrivacyPage() {
-  return <Privacy />;
+  return <PrivacyScreen />;
 }

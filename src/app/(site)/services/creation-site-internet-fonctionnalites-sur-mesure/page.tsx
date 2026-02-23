@@ -1,6 +1,6 @@
-// src/app/(site)/suivi-et-evolutions/page.tsx
+// src/app/(site)/services/creation-site-internet-fonctionnalites-sur-mesure/page.tsx
 
-import ServicesScreen from '@/screens/services/ServicesScreen';
+import CustomFeaturesPageScreen from '@/screens/services/CustomFeaturesPageScreen';
 
 export const metadata = {
   title: 'Services – Nom entreprise',
@@ -11,6 +11,6 @@ export const metadata = {
   },
 };
 
-export default function ServicesPage() {
-  return <ServicesScreen />;
+export default function CustomFeaturesPage() {
+  return <CustomFeaturesPageScreen />;
 }

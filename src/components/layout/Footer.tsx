@@ -24,12 +24,11 @@ export default function Footer() {
         {/* Menu principal */}
         <nav className="footer-nav">
           <Link href="/">Accueil</Link>
-          <Link href="/about">À propos</Link>
+          <Link href="/a-propos">À propos</Link>
           <Link href="/services">Services</Link>
-          <Link href="/testimonials">Témoignages</Link>
-          <Link href="/news">Actualités</Link>
-          <Link href="/recruitment">Recrutement</Link>
-          <Link href="/reservations">Réservations</Link>
+          <Link href="/realisations">Réalisations</Link>
+          <Link href="/tarifs">Tarifs</Link>
+          <Link href="/a-propos">À propos</Link>
           <Link href="/contact">Contact</Link>
         </nav>
 

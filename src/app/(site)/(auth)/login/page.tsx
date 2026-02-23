@@ -1,6 +1,6 @@
 // src/app/(site)/(auth)/login/page.tsx
 
-import Login from '@/screens/Login';
+import LoginScreen from '@/screens/LoginScreen';
 
 export const metadata = {
   title: 'Connexion administrateur – Nom du site',
@@ -19,5 +19,5 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const error =
     typeof rawError === 'string' ? rawError : Array.isArray(rawError) ? rawError[0] : undefined;
 
-  return <Login errorKey={error} />;
+  return <LoginScreen errorKey={error} />;
 }

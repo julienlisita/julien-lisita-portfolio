@@ -10,8 +10,6 @@ const links = [
   { href: '/admin', label: 'Tableau de bord' },
   { href: '/admin/reservations', label: 'Réservations' },
   { href: '/admin/slots', label: 'Créneaux' },
-  { href: '/admin/news', label: 'Actualités' },
-  { href: '/admin/offers', label: 'Offres d’emploi' },
   { href: '/admin/testimonials', label: 'Témoignages' },
   { href: '/admin/settings', label: 'Paramètres' },
   { href: '/', label: '← Retour au site', noActive: true },

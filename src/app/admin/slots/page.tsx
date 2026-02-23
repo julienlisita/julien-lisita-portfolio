@@ -1,6 +1,6 @@
 // src/app/admin/slots/page.tsx
 
-import SlotsAdmin from '@/screens/admin/SlotsAdmin';
+import SlotsAdminScreen from '@/screens/admin/SlotsAdminScreen';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,5 +10,5 @@ export const metadata = {
 };
 
 export default function SlotsAdminPage() {
-  return <SlotsAdmin />;
+  return <SlotsAdminScreen />;
 }

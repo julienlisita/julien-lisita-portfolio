@@ -1,6 +1,6 @@
 // src/app/(site)/legal/term/page.tsx
 
-import Terms from '@/screens/legal/Term';
+import TermsScreen from '@/screens/legal/TermScreen';
 
 export const metadata = {
   title: 'Conditions d’utilisation – Nom entreprise',
@@ -11,5 +11,5 @@ export const metadata = {
 };
 
 export default function TermsPage() {
-  return <Terms />;
+  return <TermsScreen />;
 }

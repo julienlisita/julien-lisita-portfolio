@@ -16,16 +16,6 @@ const cards = [
     description: 'Gérer les créneaux disponibles, les activer ou les désactiver.',
   },
   {
-    href: '/admin/news',
-    title: 'Actualités',
-    description: 'Ajouter ou mettre à jour les articles d’actualités.',
-  },
-  {
-    href: '/admin/offers',
-    title: 'Offres d’emploi',
-    description: 'Gérer les offres proposées sur le site.',
-  },
-  {
     href: '/admin/testimonials',
     title: 'Témoignages',
     description: 'Gérer les avis clients et les mettre en avant.',

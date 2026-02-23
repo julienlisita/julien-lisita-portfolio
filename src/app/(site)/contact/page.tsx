@@ -1,6 +1,6 @@
 // src/app/(site)/contact/page.tsx
 
-import Contact from '@/screens/Contact';
+import ContactScreen from '@/screens/ContactScreen';
 
 export const metadata = {
   title: 'Contact – Nom entreprise',
@@ -12,5 +12,5 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  return <Contact />;
+  return <ContactScreen />;
 }
