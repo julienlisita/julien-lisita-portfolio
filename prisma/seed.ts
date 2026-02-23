@@ -15,6 +15,16 @@ function pad2(n: number) {
   return String(n).padStart(2, '0');
 }
 
+function requireEnv(name: string): string {
+  const v = process.env[name];
+  if (!v) {
+    throw new Error(
+      `Missing ${name}. Create a .env.local file and set ${name} before running prisma db seed.`
+    );
+  }
+  return v;
+}
+
 // retourne "YYYY-MM-DD" basé sur le jour Paris (pas celui de la machine)
 function parisDateKey(d: Date) {
   const parts = new Intl.DateTimeFormat('fr-FR', {
@@ -42,15 +52,16 @@ function toDate<T extends { publishedAt?: string }>(item: T) {
 export async function main() {
   // Admins
 
+  const seedPassword = requireEnv('ADMIN_SEED_PASSWORD');
+
   const admins = [
-    { email: 'admin1@example.com', name: 'Admin One', password: 'ChangeMe123!' },
-    { email: 'admin2@example.com', name: 'Admin Two', password: 'ChangeMe123!' },
-    { email: 'admin3@example.com', name: 'Admin Three', password: 'ChangeMe123!' },
+    { email: 'admin1@example.com', name: 'Admin One' },
+    { email: 'admin2@example.com', name: 'Admin Two' },
+    { email: 'admin3@example.com', name: 'Admin Three' },
   ];
 
+  const passwordHash = await bcrypt.hash(seedPassword, 10);
   for (const admin of admins) {
-    const passwordHash = await bcrypt.hash(admin.password, 10);
-
     await prisma.user.upsert({
       where: { email: admin.email },
       update: {},
