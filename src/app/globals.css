@@ -12,35 +12,60 @@
   /* =========================================================
      1) COLOR SOURCES (raw palette — TEMPLATE NEUTRALS)
      ========================================================= */
-  --neutral-950: #0b0f14;
-  --neutral-900: #111827;
-  --neutral-800: #1f2937;
-  --neutral-700: #374151;
-  --neutral-600: #6b7280;
-  --neutral-500: #9aa0aa;
-  --neutral-400: #9ca3af;
-  --neutral-300: #d1d5db;
-  --neutral-200: #e5e7eb;
-  --neutral-150: #eff1f3;
-  --neutral-100: #f5f5f5;
-  --neutral-050: #fafafa;
 
+  /* Core background */
+  --bg-900: #0f0f10; /* deepest (optional, overlays) */
+  --bg-850: #161617; /* deep surface */
+  --bg-800: #1c1c1d; /* deep surface */
+  --bg-750: #222222; /* YOUR base background */
+  --bg-700: #2b2b2c; /* surface */
+  --bg-650: #333334; /* surface */
+  --bg-600: #3d3d3f; /* borders on dark */
+  --bg-500: #4a4a4c; /* subtle borders */
+  --bg-400: #5a5a5d; /* muted text on dark */
+  --bg-300: #707076; /* disabled */
+  --bg-200: #8a8a92; /* low emphasis */
+  --bg-150: #a3a3ad; /* medium */
+  --bg-100: #c7c7d1; /* high on dark (rare) */
+  --bg-050: #e5e5ee; /* very high on dark */
   --white-100: #ffffff;
+
+  /* On-dark text */
   --on-dark-100: #f2f2f2;
+  --on-dark-90: rgba(242, 242, 242, 0.9);
+  --on-dark-80: rgba(242, 242, 242, 0.8);
+  --on-dark-70: rgba(242, 242, 242, 0.7);
+
+  /* Brand accents (your palette) */
+  --accent-sky: #5ac8fa;
+  --accent-blue: #007aff;
+  --accent-purple: #9b59b6;
+  --accent-pink: #ff66b2;
+
+  /* System */
   --danger-600: #dc2626;
 
   /* =========================================================
-     2) BRAND PALETTE (semantic mapping)
-     ⚠️ SAME TOKENS AS LUMIÈRE D’ARCACHON
-     ========================================================= */
-  --brand-bg: var(--neutral-100);
-  --brand-surface: var(--white-100);
-  --brand-text: var(--neutral-900);
-  --brand-accent: var(--neutral-900);
-  --brand-muted: var(--neutral-700);
+    2) BRAND PALETTE (semantic mapping)
+    ========================================================= */
+  /* Main surfaces */
+  --brand-bg: var(--bg-750); /* page background */
+  --brand-surface: var(--bg-700); /* cards/sections */
+  --brand-surface-2: var(--bg-650); /* elevated */
+  --brand-border: var(--bg-600);
+
+  /* Text */
+  --brand-text: var(--on-dark-100);
+  --brand-text-muted: var(--on-dark-70);
+
+  /* Accents */
+  --brand-accent: var(--accent-sky); /* primary highlight */
+  --brand-accent-strong: var(--accent-blue); /* primary CTA */
+  --brand-accent-alt: var(--accent-purple); /* secondary accent */
+  --brand-accent-fun: var(--accent-pink); /* playful accent */
 
   /* Brand anchors */
-  --brand-strong: var(--neutral-800);
+  --brand-strong: var(--bg-850);
   --on-brand-strong: var(--on-dark-100);
   --on-brand-strong-soft: rgba(242, 242, 242, 0.85);
 
